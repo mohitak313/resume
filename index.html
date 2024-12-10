@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic RGB Glow</title>
+  <style>
+    /* General Reset */
+    body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    /* Header Styling */
+    header {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(to bottom, #333, #000);
+    }
+
+    header h1 {
+      font-family: 'Cursive', sans-serif;
+      font-size: 2.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 5px rgba(255, 255, 255, 1);
+    }
+
+    /* Main Content */
+    .media-container {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .media-item {
+      position: relative;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .media-item:hover {
+      transform: scale(1.05);
+    }
+
+    .media-item p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Glow Animation */
+    .media-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, 
+        rgba(255, 0, 0, 0.7), 
+        rgba(0, 255, 0, 0.7), 
+        rgba(0, 0, 255, 0.7), 
+        rgba(255, 0, 255, 0.7)
+      );
+      background-size: 400% 400%;
+      z-index: -1;
+      filter: blur(15px);
+      animation: glow 6s infinite;
+    }
+
+    @keyframes glow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Video Styling */
+    video {
+      width: 100%;
+      height: auto;
+      border: 3px solid transparent;
+      border-radius: 10px;
+    }
+
+    /* Image Styling */
+    img {
+      width: 100%;
+      height: auto;
+      border: 3px solid transparent;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dynamic RGB Glow Showcase</h1>
+  </header>
+  <main>
+    <section class="media-container">
+      <!-- Videos -->
+      <div class="media-grid">
+        <div class="media-item">
+          <video src="video1.mp4" controls></video>
+          <p>The golden hues of the sunset cast a magical spell over the horizon, painting the sky with dreams and the promise of a new dawn.</p>
+        </div>
+        <div class="media-item">
+          <video src="video2.mp4" controls></video>
+          <p>The golden hues of the sunset cast a magical spell over the horizon, painting the sky with dreams and the promise of a new dawn.</p>
+        </div>
+        <!-- Add more videos up to 15 -->
+      </div>
+
+      <!-- Images -->
+      <div class="media-grid">
+        <div class="media-item">
+          <img src="image1.jpg" alt="Image 1">
+          <p>The golden hues of the sunset cast a magical spell over the horizon, painting the sky with dreams and the promise of a new dawn.</p>
+        </div>
+        <div class="media-item">
+          <img src="image2.jpg" alt="Image 2">
+          <p>Caption for Image 2</p>
+        </div>
+        <!-- Add more images up to 35 -->
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
